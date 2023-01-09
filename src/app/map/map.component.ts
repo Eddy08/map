@@ -1084,7 +1084,7 @@ export class MapComponent {
       },
       {
         data: this.mapData,
-        type: undefined,
+        type: 'map',
         joinBy: 'name',
         name: 'Airports per million km²',
         states: {
