@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import * as Highcharts from 'highcharts';
+import * as Highcharts from 'highcharts/highmaps';
 import * as hc3d from 'highcharts/highcharts-3d';
-
+import * as worldMap from '@highcharts/map-collection/custom/world-continents.topo.json';
 // import topology from '../../assets/world.topo.json';
 // import worldMap from '@highcharts/map-collection/custom/world.geo.json';
 import { worldmap } from './worldmap';
 declare var require: any;
-const HC_map = require('highcharts/modules/map');
+// const HC_map = require('highcharts/modules/map');
 const HC_exporting = require('highcharts/modules/exporting');
 const HC_ce = require('highcharts-custom-events');
-const HC_3d = require('highcharts/highcharts-3d')
-HC_3d(Highcharts)
-HC_map(Highcharts);
+const HC_3d = require('highcharts/highcharts-3d');
+HC_3d(Highcharts);
+// HC_map(Highcharts);
 
 HC_exporting(Highcharts);
 HC_ce(Highcharts);
@@ -961,7 +961,7 @@ export class MapComponent {
       value: 153846,
     },
   ];
-  topology: Highcharts.TopoJSON = worldmap;
+  topology: Highcharts.TopoJSON = worldMap;
   Highcharts = Highcharts;
 
   getGraticule = () => {
@@ -985,8 +985,8 @@ export class MapComponent {
                 ],
         },
       });
-    
-      return data
+
+      return data;
     }
 
     // Latitudes
@@ -1083,8 +1083,7 @@ export class MapComponent {
       },
       {
         data: this.mapData,
-        type: "line",
-
+        type: undefined,
         joinBy: 'name',
         name: 'Airports per million km²',
         states: {
@@ -1104,7 +1103,7 @@ export class MapComponent {
       },
     ],
   };
-
+  /*
   // Second Chart
   chartOptions: Highcharts.Options = {
     chart: {
@@ -1171,4 +1170,5 @@ export class MapComponent {
       },
     ],
   };
+  */
 }
