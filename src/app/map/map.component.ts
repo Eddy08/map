@@ -31,6 +31,7 @@ Highcharts.setOptions({
 })
 export class MapComponent {
   // Add HCView to ngAfteViewInit
+  chartConstructor="mapChart";
   mapData = [
     {
       name: 'United States of America',
@@ -1171,4 +1172,8 @@ export class MapComponent {
     ],
   };
   */
+ /*
+ // Third Chart
+ */
+
 }
