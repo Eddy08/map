@@ -31,7 +31,7 @@ Highcharts.setOptions({
 })
 export class MapComponent {
   // Add HCView to ngAfteViewInit
-  chartConstructor="mapChart";
+  chartConstructor = 'mapChart';
   mapData = [
     {
       name: 'United States of America',
@@ -1014,7 +1014,7 @@ export class MapComponent {
     },
 
     title: {
-      text: 'Airport density per country',
+      text: 'World Wide Login',
       floating: true,
       align: 'left',
       style: {
@@ -1024,7 +1024,7 @@ export class MapComponent {
 
     subtitle: {
       text:
-        'Source: <a href="http://www.citypopulation.de/en/world/bymap/airports/">citypopulation.de</a><br>' +
+        'Source: <a href="https://mfe-login-app.vercel.app/">Login Application</a><br>' +
         'Click and drag to rotate globe<br>',
       floating: true,
       y: 34,
@@ -1172,8 +1172,7 @@ export class MapComponent {
     ],
   };
   */
- /*
+  /*
  // Third Chart
  */
-
 }
