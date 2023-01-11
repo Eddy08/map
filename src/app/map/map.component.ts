@@ -4,7 +4,6 @@ import * as hc3d from 'highcharts/highcharts-3d';
 import * as worldMap from '@highcharts/map-collection/custom/world-continents.topo.json';
 // import topology from '../../assets/world.topo.json';
 // import worldMap from '@highcharts/map-collection/custom/world.geo.json';
-import { worldmap } from './worldmap';
 declare var require: any;
 // const HC_map = require('highcharts/modules/map');
 const HC_exporting = require('highcharts/modules/exporting');
