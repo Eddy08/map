@@ -7,13 +7,14 @@ import * as worldMap from '@highcharts/map-collection/custom/world-continents.to
 declare var require: any;
 // const HC_map = require('highcharts/modules/map');
 const HC_exporting = require('highcharts/modules/exporting');
-const HC_ce = require('highcharts-custom-events');
+// const HC_ce = require('highcharts-custom-events');
+import custom_events from 'highcharts-custom-events';
 const HC_3d = require('highcharts/highcharts-3d');
 HC_3d(Highcharts);
 // HC_map(Highcharts);
 
 HC_exporting(Highcharts);
-HC_ce(Highcharts);
+custom_events(Highcharts);
 
 Highcharts.setOptions({
   title: {
@@ -1075,6 +1076,7 @@ export class MapComponent {
         id: 'graticule',
         type: 'mapline',
         data: this.getGraticule(),
+        //Map Color where the globe is joint
         nullColor: 'rgba(0, 0, 0, 0.05)',
         accessibility: {
           enabled: false,
