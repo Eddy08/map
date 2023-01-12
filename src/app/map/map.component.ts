@@ -1079,7 +1079,7 @@ export class MapComponent {
         //Map Color where the globe is joint
         nullColor: 'rgba(0, 0, 0, 0.05)',
         accessibility: {
-          enabled: false,
+          enabled: true,
         },
         enableMouseTracking: false,
       },
