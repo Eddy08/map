@@ -9,7 +9,10 @@ declare var require: any;
 const HC_exporting = require('highcharts/modules/exporting');
 // const HC_ce = require('highcharts-custom-events');
 import custom_events from 'highcharts-custom-events';
+const accessibility=require('highcharts/modules/accessibility')
+accessibility(Highcharts)
 const HC_3d = require('highcharts/highcharts-3d');
+
 HC_3d(Highcharts);
 // HC_map(Highcharts);
 
