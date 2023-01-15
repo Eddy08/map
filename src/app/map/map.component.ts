@@ -20,9 +20,12 @@ HC_exporting(Highcharts);
 custom_events(Highcharts);
 
 Highcharts.setOptions({
+
+
   title: {
+
     style: {
-      color: 'orange',
+      color: 'black',
     },
   },
 });
@@ -1089,7 +1092,7 @@ export class MapComponent {
       {
         data: this.mapData,
         type: 'map',
-        joinBy: 'name',
+        joinBy: 'hc-key',
         name: 'Airports per million km²',
         states: {
           hover: {
