@@ -9,8 +9,8 @@ declare var require: any;
 const HC_exporting = require('highcharts/modules/exporting');
 // const HC_ce = require('highcharts-custom-events');
 import custom_events from 'highcharts-custom-events';
-const accessibility=require('highcharts/modules/accessibility')
-accessibility(Highcharts)
+const accessibility = require('highcharts/modules/accessibility');
+accessibility(Highcharts);
 const HC_3d = require('highcharts/highcharts-3d');
 
 HC_3d(Highcharts);
@@ -20,10 +20,7 @@ HC_exporting(Highcharts);
 custom_events(Highcharts);
 
 Highcharts.setOptions({
-
-
   title: {
-
     style: {
       color: 'black',
     },
@@ -1038,7 +1035,7 @@ export class MapComponent {
     },
 
     legend: {
-      enabled: false,
+      enabled: true,
     },
 
     mapNavigation: {
@@ -1101,7 +1098,7 @@ export class MapComponent {
           },
         },
         dataLabels: {
-          enabled: false,
+          enabled: true,
           format: '{point.name}',
         },
 
