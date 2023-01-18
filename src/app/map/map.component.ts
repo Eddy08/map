@@ -969,7 +969,7 @@ export class MapComponent {
   Highcharts = Highcharts;
 
   getGraticule = () => {
-    const data = [];
+    let data = [];
 
     // Meridians
     for (let x = -180; x <= 180; x += 15) {
@@ -989,8 +989,8 @@ export class MapComponent {
                 ],
         },
       });
-
-      return data;
+      console.log('Graticule', data);
+      // return data;
     }
 
     // Latitudes
@@ -1084,7 +1084,7 @@ export class MapComponent {
         accessibility: {
           enabled: true,
         },
-        enableMouseTracking: false,
+        enableMouseTracking: true,
       },
       {
         data: this.mapData,
