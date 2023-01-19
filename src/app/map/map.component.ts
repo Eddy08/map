@@ -1089,8 +1089,8 @@ export class MapComponent {
       {
         data: this.mapData,
         type: 'map',
-        joinBy: 'hc-key',
-        name: 'Airports per million km²',
+        joinBy: 'name',
+        name: 'Login per million km²',
         states: {
           hover: {
             color: '#a4edba',
