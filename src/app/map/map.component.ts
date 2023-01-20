@@ -1,23 +1,13 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts/highmaps';
-import * as hc3d from 'highcharts/highcharts-3d';
 import * as worldMap from '@highcharts/map-collection/custom/world-continents.topo.json';
-// import topology from '../../assets/world.topo.json';
-// import worldMap from '@highcharts/map-collection/custom/world.geo.json';
-declare var require: any;
-// const HC_map = require('highcharts/modules/map');
-const HC_exporting = require('highcharts/modules/exporting');
-// const HC_ce = require('highcharts-custom-events');
-import custom_events from 'highcharts-custom-events';
-const accessibility = require('highcharts/modules/accessibility');
-accessibility(Highcharts);
-const HC_3d = require('highcharts/highcharts-3d');
+import highchartsExporting from "highcharts/modules/exporting";
+import highchartsExportData from "highcharts/modules/export-data";
+import highchartsAccessibility from "highcharts/modules/accessibility";
 
-HC_3d(Highcharts);
-// HC_map(Highcharts);
-
-HC_exporting(Highcharts);
-custom_events(Highcharts);
+highchartsExporting(Highcharts);
+highchartsExportData(Highcharts);
+highchartsAccessibility(Highcharts);
 
 Highcharts.setOptions({
   title: {
