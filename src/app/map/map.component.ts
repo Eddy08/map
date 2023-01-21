@@ -979,7 +979,6 @@ export class MapComponent {
                 ],
         },
       });
-      console.log('Graticule', data);
       // return data;
     }
 
@@ -1080,7 +1079,7 @@ export class MapComponent {
         data: this.mapData,
         type: 'map',
         joinBy: 'name',
-        name: 'Login per million km²',
+        name: 'Total Login per million km²',
         states: {
           hover: {
             color: '#a4edba',
