@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts/highmaps';
-import * as worldMap from '@highcharts/map-collection/custom/world-continents.topo.json';
-import highchartsExporting from "highcharts/modules/exporting";
-import highchartsExportData from "highcharts/modules/export-data";
-import highchartsAccessibility from "highcharts/modules/accessibility";
+import * as worldMap from '@highcharts/map-collection/custom/world-highres3.topo.json';
+import highchartsExporting from 'highcharts/modules/exporting';
+import highchartsExportData from 'highcharts/modules/export-data';
+import highchartsAccessibility from 'highcharts/modules/accessibility';
 
 highchartsExporting(Highcharts);
 highchartsExportData(Highcharts);
