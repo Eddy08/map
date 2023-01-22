@@ -1024,7 +1024,7 @@ export class MapComponent {
     },
 
     legend: {
-      enabled: true,
+      enabled: false,
     },
 
     mapNavigation: {
