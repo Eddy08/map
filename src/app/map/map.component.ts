@@ -76,7 +76,6 @@ export class MapComponent {
         lineWidth: y === 0 ? 2 : undefined,
       });
     }
-
     return data;
   };
 
@@ -148,18 +147,19 @@ export class MapComponent {
         id: 'graticule',
         type: 'mapline',
         data: this.getGraticule(),
+        showInLegend: false,
         //Map Color where the globe is joint
         nullColor: 'rgba(0, 0, 0, 0.05)',
         accessibility: {
-          enabled: true,
+          enabled: false,
         },
-        enableMouseTracking: true,
       },
       {
         data: this.mapData,
         type: 'map',
         joinBy: 'name',
         name: 'Total Login per million km²',
+        enableMouseTracking: true,
         states: {
           hover: {
             color: '#a4edba',
