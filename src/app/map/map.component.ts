@@ -130,7 +130,13 @@ export class MapComponent {
     },
 
     tooltip: {
-      pointFormat: '{point.name}: {point.value}',
+      formatter: function () {
+        if (this.point.name) {
+          return `${this.point.name}: ${this.point.value}`;
+        } else {
+          return false; // now you don't
+        }
+      },
     },
 
     plotOptions: {
@@ -143,11 +149,11 @@ export class MapComponent {
     },
     series: [
       {
-        name: 'Graticule',
         id: 'graticule',
         type: 'mapline',
         data: this.getGraticule(),
         showInLegend: false,
+
         //Map Color where the globe is joint
         nullColor: 'rgba(0, 0, 0, 0.05)',
         accessibility: {
@@ -172,7 +178,7 @@ export class MapComponent {
         },
 
         accessibility: {
-          exposeAsGroupOnly: true,
+          enabled: true,
         },
       },
     ],
