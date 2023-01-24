@@ -167,7 +167,7 @@ export class MapComponent {
           },
         },
         dataLabels: {
-          enabled: true,
+          enabled: false,
           format: '{point.name}',
         },
 
