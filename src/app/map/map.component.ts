@@ -115,7 +115,6 @@ export class MapComponent {
     },
 
     mapView: {
-      maxZoom: 30,
       projection: {
         name: 'Orthographic',
         rotation: [60, -30],
@@ -148,6 +147,7 @@ export class MapComponent {
       },
     },
     series: [
+      // Globe Latitudes and Longitudes Lines
       {
         id: 'graticule',
         type: 'mapline',
@@ -160,6 +160,7 @@ export class MapComponent {
           enabled: false,
         },
       },
+      // The Official Data Series on the Globe
       {
         data: this.mapData,
         type: 'map',
@@ -181,54 +182,83 @@ export class MapComponent {
           enabled: true,
         },
       },
+      // PinPoints 📍 on the Globe
       {
-        data:[{
-          name: 'London',
-          lat: 51.507222,
-          lon: -0.1275
-      }, {
-          name: 'Birmingham',
-          lat: 52.483056,
-          lon: -1.893611
-      }, {
-          name: 'Leeds',
-          lat: 53.799722,
-          lon: -1.549167
-      }, {
-          name: 'Glasgow',
-          lat: 55.858,
-          lon: -4.259
-      }, {
-          name: 'Sheffield',
-          lat: 53.383611,
-          lon: -1.466944
-      }, {
-          name: 'Liverpool',
-          lat: 53.4,
-          lon: -3
-      }, {
-          name: 'Bristol',
-          lat: 51.45,
-          lon: -2.583333
-      }, {
-          name: 'Belfast',
-          lat: 54.597,
-          lon: -5.93
-      }, {
-          name: 'Lerwick',
-          lat: 60.155,
-          lon: -1.145,
-          dataLabels: {
+        data: [
+          {
+            name: 'London',
+            lat: 51.507222,
+            lon: -0.1275,
+          },
+          {
+            name: 'Birmingham',
+            lat: 52.483056,
+            lon: -1.893611,
+          },
+          {
+            name: 'Leeds',
+            lat: 53.799722,
+            lon: -1.549167,
+          },
+          {
+            name: 'Glasgow',
+            lat: 55.858,
+            lon: -4.259,
+          },
+          {
+            name: 'Sheffield',
+            lat: 53.383611,
+            lon: -1.466944,
+          },
+          {
+            name: 'Liverpool',
+            lat: 53.4,
+            lon: -3,
+          },
+          {
+            name: 'Bristol',
+            lat: 51.45,
+            lon: -2.583333,
+          },
+          {
+            name: 'Belfast',
+            lat: 54.597,
+            lon: -5.93,
+          },
+          {
+            name: 'Lerwick',
+            lat: 60.155,
+            lon: -1.145,
+            dataLabels: {
               align: 'left',
               x: 5,
-              verticalAlign: 'middle'
-          }
-      }],
-      type:'mappoint'
-
-      }
+              verticalAlign: 'middle',
+            },
+          },
+        ],
+        type: 'mappoint',
+      },
+      // MapLine Between two Locations
+      {
+        lineWidth:2,
+        color:'blue',
+        type: 'mapline',
+        data: [
+          {
+            geometry: {
+              type: 'LineString',
+              coordinates: [
+                [4.9, 53.38], // Amsterdam
+                [-118.24, 34.05], // Los Angeles
+    
+              ],
+            },
+          },
+        ],
+      },
     ],
   };
+
   /*
   // Second Chart
   chartOptions: Highcharts.Options = {
