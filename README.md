@@ -1,3 +1,9 @@
+# HighCharts Resources
+
+https://stackblitz.com/edit/highcharts-angular-world-map-qz7mg7?file=src%2Fapp%2Fapp.component.html
+
+https://stackblitz.com/edit/angular-highcharts-v86vbt?file=app%2Fapp.component.ts
+
 # App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ExtendedChart } from './ExtendedChart';
 import * as Highcharts from 'highcharts/highmaps';
 import * as worldMap from '@highcharts/map-collection/custom/world-highres3.topo.json';
 import highchartsExporting from 'highcharts/modules/exporting';
@@ -23,6 +24,10 @@ Highcharts.setOptions({
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent {
+  ngAfterViewInit() {
+    this.reflow();
+  }
+
   // Add HCView to ngAfteViewInit
   chartConstructor = 'mapChart';
   mapData = [
@@ -37,6 +42,8 @@ export class MapComponent {
   ];
   topology: Highcharts.TopoJSON = worldMap;
   Highcharts = Highcharts;
+
+  Globe: any;
 
   getGraticule = () => {
     let data = [];
@@ -187,46 +194,55 @@ export class MapComponent {
         data: [
           {
             name: 'London',
+            id: 'London',
             lat: 51.507222,
             lon: -0.1275,
           },
           {
             name: 'Birmingham',
+            id: 'Birmingham',
             lat: 52.483056,
             lon: -1.893611,
           },
           {
             name: 'Leeds',
+            id: 'Leeds',
             lat: 53.799722,
             lon: -1.549167,
           },
           {
             name: 'Glasgow',
+            id: 'Glasgow',
             lat: 55.858,
             lon: -4.259,
           },
           {
             name: 'Sheffield',
+            id: 'Sheffield',
             lat: 53.383611,
             lon: -1.466944,
           },
           {
             name: 'Liverpool',
+            id: 'Liverpool',
             lat: 53.4,
             lon: -3,
           },
           {
             name: 'Bristol',
+            id: 'Bristol',
             lat: 51.45,
             lon: -2.583333,
           },
           {
             name: 'Belfast',
+            id: 'Belfast',
             lat: 54.597,
             lon: -5.93,
           },
           {
             name: 'Lerwick',
+            id: 'Lerwick',
             lat: 60.155,
             lon: -1.145,
             dataLabels: {
@@ -238,26 +254,105 @@ export class MapComponent {
         ],
         type: 'mappoint',
       },
-      // MapLine Between two Locations
+    ],
+  };
+
+  chartCallback: Highcharts.ChartCallbackFunction = (chart) => {
+    this.Globe = chart;
+    // const pos = chart.fromLatLonToPoint({ lat: 19.07, lon: 72.87 });
+
+    // (chart as ExtendedChart).mapView.zoomBy(3, [pos.x, pos.y]);
+  };
+
+  // Function to return an SVG path between two points, with an arc
+  pointsToPath(
+    fromPoint: number,
+    toPoint: number,
+    invertArc: boolean = false,
+    curve: number = 0
+  ): any[][] {
+    const from = this.Globe.mapView.lonLatToProjectedUnits(fromPoint),
+      to = this.Globe.mapView.lonLatToProjectedUnits(toPoint),
+      arcPointX = (from.x + to.x) / (invertArc ? 2 + curve : 2 - curve),
+      arcPointY = (from.y + to.y) / (invertArc ? 2 + curve : 2 - curve);
+
+    return [
+      ['M', from.x, from.y],
+      ['Q', arcPointX, arcPointY, to.x, to.y],
+    ];
+  }
+  reflow() {
+    // Add a series of lines for London
+    console.log('Inside reflow () ');
+    this.Globe.addSeries(
       {
-        lineWidth:2,
-        color:'blue',
+        name: 'London flight routes',
         type: 'mapline',
+        lineWidth: 2,
+        color: '#74B4E3',
+        // color: this.Highcharts.setOptions({color:'green'} as Highcharts.Options),
         data: [
           {
-            geometry: {
-              type: 'LineString',
-              coordinates: [
-                [4.9, 53.38], // Amsterdam
-                [-118.24, 34.05], // Los Angeles
-    
-              ],
-            },
+            id: 'London - Glasgow',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Glasgow')
+            ),
+          },
+          {
+            id: 'London - Belfast',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Belfast'),
+              true
+            ),
+          },
+          {
+            id: 'London - Leeds',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Leeds')
+            ),
+          },
+          {
+            id: 'London - Liverpool',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Liverpool'),
+              true
+            ),
+          },
+          {
+            id: 'London - Sheffield',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Sheffield')
+            ),
+          },
+          {
+            id: 'London - Birmingham',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Birmingham'),
+              true
+            ),
+          },
+          {
+            id: 'London - Bristol',
+            path: this.pointsToPath(
+              this.Globe.get('London'),
+              this.Globe.get('Bristol'),
+              true
+            ),
           },
         ],
       },
-    ],
-  };
+      true,
+      false
+    );
+    console.log(this.Globe);
+    // this.Globe.redraw();
+  }
 
   /*
   // Second Chart
