@@ -151,7 +151,16 @@ export class MapComponent {
           duration: 750,
         },
         clip: false,
+        marker: {
+          fillColor: '#FFFFFF',
+          lineWidth: 2,
+          lineColor: 'green',
+        },
+        
       },
+     mapline:{
+      color:'green'
+     }
     },
     series: [
       // Globe Latitudes and Longitudes Lines
@@ -289,7 +298,8 @@ export class MapComponent {
         name: 'London flight routes',
         type: 'mapline',
         lineWidth: 2,
-        color: '#74B4E3',
+        color: '#a4edba',
+        borderColor: '#333333',
         // color: this.Highcharts.setOptions({color:'green'} as Highcharts.Options),
         data: [
           {
