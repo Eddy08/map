@@ -298,7 +298,7 @@ export class MapComponent {
         name: 'London flight routes',
         type: 'mapline',
         lineWidth: 2,
-        color: '#a4edba',
+        color: '#333333',
         borderColor: '#333333',
         // color: this.Highcharts.setOptions({color:'green'} as Highcharts.Options),
         data: [
