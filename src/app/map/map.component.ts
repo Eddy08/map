@@ -24,7 +24,7 @@ Highcharts.setOptions({
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent {
-  ngAfterViewInit() {
+  ngOnInit() {
     this.reflow();
   }
 
