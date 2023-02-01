@@ -233,6 +233,7 @@ export class MapComponent {
             lineWidth: 2,
             color: '#333333',
             borderColor: '#333333',
+            dashStyle: 'line',
             // color: this.Highcharts.setOptions({color:'green'} as Highcharts.Options),
             data: [
               {
