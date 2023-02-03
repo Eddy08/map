@@ -561,6 +561,16 @@ export class MapComponent {
             },
             color: '#313f77',
           },
+          {
+            geometry: {
+              type: 'LineString',
+              coordinates: [
+                [-118.24, 34.05], // Los Angeles
+                [77.2, 28.6], // New Delhi
+              ],
+            },
+            color: '#00FF00',
+          },
         ],
         lineWidth: 2,
         accessibility: {
