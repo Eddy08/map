@@ -367,7 +367,69 @@ export class MapComponent {
     }
     return data;
   };
+  afterAnimate = (e: any) => {
+    console.log('Inside After Animate');
+    {
+      const chart = e.target.chart;
 
+      if (!chart.get('flight-route')) {
+        chart.addSeries(
+          {
+            type: 'mapline',
+            name: 'Flight route, Amsterdam - Los Angeles',
+            animation: false,
+            id: 'flight-route',
+            data: [
+              {
+                geometry: {
+                  type: 'LineString',
+                  coordinates: [
+                    [4.9, 53.38], // Amsterdam
+                    [-118.24, 34.05], // Los Angeles
+                  ],
+                },
+                color: '#313f77',
+              },
+            ],
+            lineWidth: 2,
+            accessibility: {
+              exposeAsGroupOnly: true,
+            },
+          },
+          false
+        );
+        chart.addSeries(
+          {
+            type: 'mappoint',
+            animation: false,
+            data: [
+              {
+                name: 'Amsterdam',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [4.9, 53.38],
+                },
+              },
+              {
+                name: 'LA',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-118.24, 34.05],
+                },
+              },
+            ],
+            color: '#313f77',
+            accessibility: {
+              enabled: false,
+            },
+          },
+          false
+        );
+        chart.redraw(true);
+      }
+    }
+    console.log('Chart --> ', e.target.chart);
+  };
   map: Highcharts.Options = {
     chart: {
       map: this.topology,
@@ -421,6 +483,8 @@ export class MapComponent {
       formatter: function () {
         if (this.point.name && this.point.value) {
           return `${this.point.name}: ${this.point.value}`;
+        } else if (this.series.type && this.series.name.includes('route')) {
+          return `${this.series.name}`;
         } else {
           return false; // now you don't
         }
@@ -474,7 +538,9 @@ export class MapComponent {
           enabled: false,
           format: '{point.name}',
         },
-
+        events: {
+          afterAnimate: this.afterAnimate,
+        },
         accessibility: {
           enabled: true,
         },
@@ -545,6 +611,7 @@ export class MapComponent {
         type: 'mappoint',
       },
       // Routes
+      /*
       {
         type: 'mapline',
         name: 'Flight route, Amsterdam - Los Angeles',
@@ -577,6 +644,7 @@ export class MapComponent {
           exposeAsGroupOnly: true,
         },
       },
+      */
     ],
   };
 
