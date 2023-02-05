@@ -309,6 +309,7 @@ export class MapComponent {
   //   console.log('Map Updated');
   //   console.log(this.map);
   // }
+
   Globe: any;
 
   chartCallback: Highcharts.ChartCallbackFunction | any;
@@ -368,7 +369,7 @@ export class MapComponent {
     return data;
   };
   afterAnimate = (e: any) => {
-    console.log('Inside After Animate');
+    // console.log('Inside After Animate');
     {
       const chart = e.target.chart;
 
@@ -427,8 +428,27 @@ export class MapComponent {
         );
         chart.redraw(true);
       }
+      // console.log('Inisde afterAnimate rotate Globe');
+      let rot_x_axis = 25;
+      setInterval(() => {
+        let rotationArray = [rot_x_axis % 360, -30];
+        chart.mapView.update(
+          {
+            projection: {
+              name: 'Orthographic',
+              rotation: rotationArray,
+            },
+          },
+          true,
+          false
+        );
+        rot_x_axis += 1;
+        // console.log('rot_x_axis', rot_x_axis % 360);
+        chart.redraw(true);
+        // console.log('updated chart', chart);
+      }, 100);
     }
-    console.log('Chart --> ', e.target.chart);
+    // console.log('Chart --> ', e.target.chart);
   };
   map: Highcharts.Options = {
     chart: {
@@ -468,7 +488,7 @@ export class MapComponent {
     mapView: {
       projection: {
         name: 'Orthographic',
-        rotation: [60, -30],
+        rotation: [25, -30],
       },
     },
 
