@@ -1,3 +1,11 @@
+# For MFE Angular Architect Adding different Packages:
+
+ng g @angular-architects/module-federation:boot-async false --project yourProject
+
+ng add your-libraries-of-chioce --project yourProject
+
+ng g @angular-architects/module-federation:boot-async true --project yourProject
+
 # HighCharts Resources
 
 https://stackblitz.com/edit/highcharts-angular-world-map-qz7mg7?file=src%2Fapp%2Fapp.component.html
