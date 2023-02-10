@@ -667,7 +667,66 @@ export class MapComponent {
       */
     ],
   };
+  explore(event: any){
+  
+    const chart = event.target.chart;
 
+    if (!chart.get('flight-route')) {
+      chart.addSeries(
+        {
+          type: 'mapline',
+          name: 'Flight route, Amsterdam - Los Angeles',
+          animation: false,
+          id: 'flight-route',
+          data: [
+            {
+              geometry: {
+                type: 'LineString',
+                coordinates: [
+                  [4.9, 53.38], // Amsterdam
+                  [-118.24, 34.05], // Los Angeles
+                ],
+              },
+              color: '#313f77',
+            },
+          ],
+          lineWidth: 2,
+          accessibility: {
+            exposeAsGroupOnly: true,
+          },
+        },
+        false
+      );
+      chart.addSeries(
+        {
+          type: 'mappoint',
+          animation: false,
+          data: [
+            {
+              name: 'Amsterdam',
+              geometry: {
+                type: 'Point',
+                coordinates: [4.9, 53.38],
+              },
+            },
+            {
+              name: 'LA',
+              geometry: {
+                type: 'Point',
+                coordinates: [-118.24, 34.05],
+              },
+            },
+          ],
+          color: '#313f77',
+          accessibility: {
+            enabled: false,
+          },
+        },
+        false
+      );
+      chart.redraw(true);
+    }
+ }
   /*
   reflow() {
     // Add a series of lines for London
