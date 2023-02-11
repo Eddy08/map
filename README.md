@@ -1,10 +1,7 @@
-# For MFE Angular Architect Adding different Packages:
+#Explore Map
 
-ng g @angular-architects/module-federation:boot-async false --project yourProject
-
-ng add your-libraries-of-chioce --project yourProject
-
-ng g @angular-architects/module-federation:boot-async true --project yourProject
+1. Ability to zoom in and out for a particular country , with its definite boundry
+2. Rotating Animations should be stopped.
 
 # HighCharts Resources
 
