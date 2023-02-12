@@ -430,8 +430,27 @@ export class MapComponent {
         chart.redraw(true);
       }
       // console.log('Inisde afterAnimate rotate Globe');
-      console.log(chart.mapView.options.projection.rotation[0])
-      console.log(chart.mapView.options.projection.rotation[1])
+      // console.log(chart.mapView.options.projection.rotation[0])
+      // console.log(chart.mapView.options.projection.rotation[1])
+     
+      // Circular Reference Utility
+      const getCircularReplacer = () => {
+        const seen = new WeakSet();
+        return (key:any, value:any) => {
+          if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+              return;
+            }
+            seen.add(value);
+          }
+          return value;
+        };
+      };
+      
+      
+      // {"otherData":123}
+      
+      console.log("chart",JSON.stringify(chart.mapView, getCircularReplacer()))
       
       setInterval(() => {
         let rot_x_axis = chart.mapView.options.projection.rotation[0]+2;
