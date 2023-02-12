@@ -1,8 +1,7 @@
 #Explore Map
 
-1. Ability to zoom in and out for a particular country , with its definite boundry
-2. Rotating Animations should be stopped.
-
+1. Create a new Widget For showing particular Country details seperately
+2. Create a new component to show that
 # HighCharts Resources
 
 https://stackblitz.com/edit/highcharts-angular-world-map-qz7mg7?file=src%2Fapp%2Fapp.component.html
