@@ -430,9 +430,13 @@ export class MapComponent {
         chart.redraw(true);
       }
       // console.log('Inisde afterAnimate rotate Globe');
-      let rot_x_axis = 25;
+      console.log(chart.mapView.options.projection.rotation[0])
+      console.log(chart.mapView.options.projection.rotation[1])
+      
       setInterval(() => {
-        let rotationArray = [rot_x_axis % 360, -30];
+        let rot_x_axis = chart.mapView.options.projection.rotation[0]+2;
+        let rot_y_axis = chart.mapView.options.projection.rotation[1]
+        let rotationArray = [rot_x_axis % 360, rot_y_axis];
         chart.mapView.update(
           {
             projection: {
@@ -445,9 +449,9 @@ export class MapComponent {
         );
         rot_x_axis += 1;
         // console.log('rot_x_axis', rot_x_axis % 360);
-        chart.redraw(true);
         // console.log('updated chart', chart);
       }, 100);
+      chart.redraw(true);
     }
     // console.log('Chart --> ', e.target.chart);
   };
@@ -669,82 +673,82 @@ export class MapComponent {
     ],
   };
   
-  explore() {
-    console.log('inside explore method');
-    console.log(this.chartCallback);
-    // const chart = this.chartCallback.chart;
-    console.log('chart', this.map.series);
-    let index = this.map.series?.findIndex(
-      (x: any) => x.events!== undefined
-    );
-    console.log(index)
-    if(index && this.map.series){
-      console.log(this.map?.series[index])
-        if(this.map.series[index].events ){
-          if(this.map.series[index].events?.afterAnimate)
-          delete this.map.series[index]?.events?.afterAnimate
-          this.updateFlag=true;
-        }
-    }
+  // explore() {
+  //   console.log('inside explore method');
+  //   console.log(this.chartCallback);
+  //   // const chart = this.chartCallback.chart;
+  //   console.log('chart', this.map.series);
+  //   let index = this.map.series?.findIndex(
+  //     (x: any) => x.events!== undefined
+  //   );
+  //   console.log(index)
+  //   if(index && this.map.series){
+  //     console.log(this.map?.series[index])
+  //       if(this.map.series[index].events ){
+  //         if(this.map.series[index].events?.afterAnimate)
+  //         delete this.map.series[index]?.events?.afterAnimate
+  //         this.updateFlag=true;
+  //       }
+  //   }
 
-    // this.map.series?[index].events.afterAnimate=this.stopAnimate();
-    /*
-        this.map.chart.(
-          {
-            type: 'mapline',
-            name: 'Flight route, Amsterdam - Los Angeles',
-            animation: false,
-            id: 'flight-route',
-            data: [
-              {
-                geometry: {
-                  type: 'LineString',
-                  coordinates: [
-                    [4.9, 53.38], // Amsterdam
-                    [-118.24, 34.05], // Los Angeles
-                  ],
-                },
-                color: '#313f77',
-              },
-            ],
-            lineWidth: 2,
-            accessibility: {
-              exposeAsGroupOnly: true,
-            },
-          },
-          false
-        );
-        chart.addSeries(
-          {
-            type: 'mappoint',
-            animation: false,
-            data: [
-              {
-                name: 'Amsterdam',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [4.9, 53.38],
-                },
-              },
-              {
-                name: 'LA',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-118.24, 34.05],
-                },
-              },
-            ],
-            color: '#313f77',
-            accessibility: {
-              enabled: false,
-            },
-          },
-          false
-        );
-        chart.redraw(true);
+  //   // this.map.series?[index].events.afterAnimate=this.stopAnimate();
+  //   /*
+  //       this.map.chart.(
+  //         {
+  //           type: 'mapline',
+  //           name: 'Flight route, Amsterdam - Los Angeles',
+  //           animation: false,
+  //           id: 'flight-route',
+  //           data: [
+  //             {
+  //               geometry: {
+  //                 type: 'LineString',
+  //                 coordinates: [
+  //                   [4.9, 53.38], // Amsterdam
+  //                   [-118.24, 34.05], // Los Angeles
+  //                 ],
+  //               },
+  //               color: '#313f77',
+  //             },
+  //           ],
+  //           lineWidth: 2,
+  //           accessibility: {
+  //             exposeAsGroupOnly: true,
+  //           },
+  //         },
+  //         false
+  //       );
+  //       chart.addSeries(
+  //         {
+  //           type: 'mappoint',
+  //           animation: false,
+  //           data: [
+  //             {
+  //               name: 'Amsterdam',
+  //               geometry: {
+  //                 type: 'Point',
+  //                 coordinates: [4.9, 53.38],
+  //               },
+  //             },
+  //             {
+  //               name: 'LA',
+  //               geometry: {
+  //                 type: 'Point',
+  //                 coordinates: [-118.24, 34.05],
+  //               },
+  //             },
+  //           ],
+  //           color: '#313f77',
+  //           accessibility: {
+  //             enabled: false,
+  //           },
+  //         },
+  //         false
+  //       );
+  //       chart.redraw(true);
       
-   */
-  }
+  //  */
+  // }
 
   /*
   reflow() {
