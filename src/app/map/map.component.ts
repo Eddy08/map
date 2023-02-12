@@ -312,6 +312,7 @@ export class MapComponent {
 
   Globe: any;
 
+  updateFlag:boolean=false;
   chartCallback: Highcharts.ChartCallbackFunction | any;
 
   // Add HCView to ngAfteViewInit
@@ -667,66 +668,84 @@ export class MapComponent {
       */
     ],
   };
-  explore(event: any){
   
-    const chart = event.target.chart;
-
-    if (!chart.get('flight-route')) {
-      chart.addSeries(
-        {
-          type: 'mapline',
-          name: 'Flight route, Amsterdam - Los Angeles',
-          animation: false,
-          id: 'flight-route',
-          data: [
-            {
-              geometry: {
-                type: 'LineString',
-                coordinates: [
-                  [4.9, 53.38], // Amsterdam
-                  [-118.24, 34.05], // Los Angeles
-                ],
-              },
-              color: '#313f77',
-            },
-          ],
-          lineWidth: 2,
-          accessibility: {
-            exposeAsGroupOnly: true,
-          },
-        },
-        false
-      );
-      chart.addSeries(
-        {
-          type: 'mappoint',
-          animation: false,
-          data: [
-            {
-              name: 'Amsterdam',
-              geometry: {
-                type: 'Point',
-                coordinates: [4.9, 53.38],
-              },
-            },
-            {
-              name: 'LA',
-              geometry: {
-                type: 'Point',
-                coordinates: [-118.24, 34.05],
-              },
-            },
-          ],
-          color: '#313f77',
-          accessibility: {
-            enabled: false,
-          },
-        },
-        false
-      );
-      chart.redraw(true);
+  explore() {
+    console.log('inside explore method');
+    console.log(this.chartCallback);
+    // const chart = this.chartCallback.chart;
+    console.log('chart', this.map.series);
+    let index = this.map.series?.findIndex(
+      (x: any) => x.events!== undefined
+    );
+    console.log(index)
+    if(index && this.map.series){
+      console.log(this.map?.series[index])
+        if(this.map.series[index].events ){
+          if(this.map.series[index].events?.afterAnimate)
+          delete this.map.series[index]?.events?.afterAnimate
+          this.updateFlag=true;
+        }
     }
- }
+
+    // this.map.series?[index].events.afterAnimate=this.stopAnimate();
+    /*
+        this.map.chart.(
+          {
+            type: 'mapline',
+            name: 'Flight route, Amsterdam - Los Angeles',
+            animation: false,
+            id: 'flight-route',
+            data: [
+              {
+                geometry: {
+                  type: 'LineString',
+                  coordinates: [
+                    [4.9, 53.38], // Amsterdam
+                    [-118.24, 34.05], // Los Angeles
+                  ],
+                },
+                color: '#313f77',
+              },
+            ],
+            lineWidth: 2,
+            accessibility: {
+              exposeAsGroupOnly: true,
+            },
+          },
+          false
+        );
+        chart.addSeries(
+          {
+            type: 'mappoint',
+            animation: false,
+            data: [
+              {
+                name: 'Amsterdam',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [4.9, 53.38],
+                },
+              },
+              {
+                name: 'LA',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-118.24, 34.05],
+                },
+              },
+            ],
+            color: '#313f77',
+            accessibility: {
+              enabled: false,
+            },
+          },
+          false
+        );
+        chart.redraw(true);
+      
+   */
+  }
+
   /*
   reflow() {
     // Add a series of lines for London
