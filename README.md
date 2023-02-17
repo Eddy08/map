@@ -2,6 +2,9 @@
 
 1. Create a new Widget For showing particular Country details seperately
 2. Create a new component to show that
+3. Ability to create a line and points and then remove them automatically through subscription:
+    a. Implement the GraphQL Endpoint which is have subscription 
+    b. Use the Data as a stream in Angular application
 # HighCharts Resources
 
 https://stackblitz.com/edit/highcharts-angular-world-map-qz7mg7?file=src%2Fapp%2Fapp.component.html
