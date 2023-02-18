@@ -312,7 +312,7 @@ export class MapComponent {
 
   Globe: any;
 
-  updateFlag:boolean=false;
+  updateFlag: boolean = false;
   chartCallback: Highcharts.ChartCallbackFunction | any;
 
   // Add HCView to ngAfteViewInit
@@ -432,12 +432,12 @@ export class MapComponent {
       // console.log('Inisde afterAnimate rotate Globe');
       // console.log(chart.mapView.options.projection.rotation[0])
       // console.log(chart.mapView.options.projection.rotation[1])
-     
+
       // Circular Reference Utility
       const getCircularReplacer = () => {
         const seen = new WeakSet();
-        return (key:any, value:any) => {
-          if (typeof value === "object" && value !== null) {
+        return (key: any, value: any) => {
+          if (typeof value === 'object' && value !== null) {
             if (seen.has(value)) {
               return;
             }
@@ -446,15 +446,17 @@ export class MapComponent {
           return value;
         };
       };
-      
-      
+
       // {"otherData":123}
-      
-      console.log("chart",JSON.stringify(chart.mapView, getCircularReplacer()))
-      
+
+      console.log(
+        'chart',
+        JSON.stringify(chart.mapView, getCircularReplacer())
+      );
+
       setInterval(() => {
-        let rot_x_axis = chart.mapView.options.projection.rotation[0]+2;
-        let rot_y_axis = chart.mapView.options.projection.rotation[1]
+        let rot_x_axis = chart.mapView.options.projection.rotation[0] + 2;
+        let rot_y_axis = chart.mapView.options.projection.rotation[1];
         let rotationArray = [rot_x_axis % 360, rot_y_axis];
         chart.mapView.update(
           {
@@ -489,9 +491,9 @@ export class MapComponent {
     },
 
     subtitle: {
-      text:
-        'Source: <a href="https://mfe-login-app.vercel.app/">Login Application</a><br>' +
-        'Click and drag to rotate globe<br>',
+      // text:
+      //   'Source: <a href="https://mfe-login-app.vercel.app/">Login Application</a><br>' +
+      //   'Click and drag to rotate globe<br>',
       floating: true,
       y: 34,
       align: 'left',
@@ -691,7 +693,7 @@ export class MapComponent {
       */
     ],
   };
-  
+
   // explore() {
   //   console.log('inside explore method');
   //   console.log(this.chartCallback);
@@ -765,7 +767,7 @@ export class MapComponent {
   //         false
   //       );
   //       chart.redraw(true);
-      
+
   //  */
   // }
 
