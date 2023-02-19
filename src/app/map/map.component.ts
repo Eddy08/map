@@ -138,6 +138,7 @@ export class MapComponent {
   //           accessibility: {
   //             enabled: false,
   //           },
+
   //         },
   //         // The Official Data Series on the Globe
   //         {
