@@ -1,3 +1,5 @@
+# Upgrade to Latest Angular version
+## Also Make a CI / CD for vulnerabilities
 #Explore Map
 
 1. Create a new Widget For showing particular Country details seperately
