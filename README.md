@@ -11,7 +11,7 @@
    b. Use the Data as a stream in Angular application
    c. Whenever a person login the Angular mfe-login application should track the user location and session timing and store it in the db
    d. mfe-map should show the location and if the same person is coming from two to three locations simulteanously with same fingerprint , then show the lines between them
-4. Try to use spring cloud subscriber consumer pattern + Graphql
+4. Try to use spring cloud subscriber consumer pattern (read about it) + Graphql
 5. Add Geo Location support in the Login Application and also in the backend to get to know from where the Backend call is getting intiated: ( Server tracing )
 
 # HighCharts Resources
