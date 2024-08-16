@@ -1,8 +1,8 @@
 # Upgrade to Latest Angular version
 
 ## Also Make a CI / CD for vulnerabilities and their possible fixes automatically (if possible) through depadabot
-
-#Explore Map
+Check out : https://github.com/janarosmonaliev/github-globe for some inspiration.
+# Explore Map
 
 1. Create a new Widget For showing particular Country details seperately
 2. Create a new component to show that
